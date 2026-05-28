@@ -44,6 +44,14 @@
             ccw-binding = <&kp C_VOL_DN>;
         };
 
+        rsr_scrl: rsr_scrl {
+            compatible = "zmk,behavior-runtime-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            tap-ms = <5>;
+            cw-binding = <&msc SCRL_UP>;
+            ccw-binding = <&msc SCRL_DOWN>;
+        };
+
         rsr_trans: rsr_trans {
             compatible = "zmk,behavior-runtime-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -84,7 +92,7 @@
             >;
 
             label = "layer0";
-            sensor-bindings = <&rsr_vol &rsr_trans>;
+            sensor-bindings = <&rsr_scrl &rsr_trans>;
         };
 
         layer_1 {
@@ -98,7 +106,7 @@
             >;
 
             label = "layer1";
-            sensor-bindings = <&rsr_vol &rsr_trans>;
+            sensor-bindings = <&rsr_scrl &rsr_trans>;
         };
 
         layer_2 {
@@ -112,7 +120,7 @@
             >;
 
             label = "layer2";
-            sensor-bindings = <&rsr_vol &rsr_trans>;
+            sensor-bindings = <&rsr_scrl &rsr_trans>;
         };
 
         layer_3 {
@@ -126,7 +134,7 @@
             >;
 
             label = "layer3";
-            sensor-bindings = <&rsr_vol &rsr_trans>;
+            sensor-bindings = <&rsr_scrl &rsr_trans>;
         };
     };
 };
