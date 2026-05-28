@@ -17,7 +17,7 @@
 #include <dt-bindings/zmk/pointing.h>
 #include <behaviors/runtime-sensor-rotate.dtsi>
 
-&mmv_input_listener { input-processors = <&zip_xy_scaler 2 1>; };
+&mmv_input_listener { input-processors = <&zip_xy_scaler 1 2>; };
 
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
@@ -75,11 +75,11 @@
 
         BASE {
             bindings = <
- &kp ESC       &kp N1          &kp N2           &kp N3          &kp N4     &kp N5     &kp N6      &kp N7     &kp N8     &kp N9         &kp N0   &kp MINUS  &kp EQUAL  &kp BSPC      &kp F5                           &kp NUMBER_6
- &kp TAB       &kp Q           &kp W            &kp E           &kp R      &kp T                  &kp Y      &kp U      &kp I          &kp O    &kp P      &kp LBKT   &kp RBKT      &kp BSLH         &rgb_ug RGB_ON  &kp T
- &kp CAPS      &kp A           &kp S            &kp D           &kp F      &kp G                  &kp H      &kp J      &kp K          &kp L    &kp SEMI   &kp APOS   &kp ENTER     &rgb_ug RGB_OFF                  &kp G
- &kp LSHFT     &kp Z           &kp X            &kp C           &kp V      &kp B                  &kp N      &kp M      &kp COMMA      &kp DOT  &kp FSLH   &kp RSHFT  &kp UP_ARROW  &kp DELETE                       &kp B
- &kp LCTRL     &kp LEFT_GUI    &kp LEFT_ALT     &mo 1                      &kp SPACE                         &kp SPACE  &kp RIGHT_ALT  &mo 2    &kp RCTRL  &kp LEFT   &kp DOWN      &kp RIGHT                        &kp SPACE
+ &kp ESC       &kp N1          &kp N2           &kp N3          &kp N4     &kp N5     &kp N6      &kp N7     &kp N8     &kp N9         &kp N0   &kp MINUS  &kp EQUAL  &kp BSPC      &kp DELETE                       &kp NUMBER_6
+ &kp TAB       &kp Q           &kp W            &kp E           &kp R      &kp T                  &kp Y      &kp U      &kp I          &kp O    &kp P      &kp LBKT   &kp RBKT      &kp BSLH         &kp PG_UP       &kp T
+ &kp CAPS      &kp A           &kp S            &kp D           &kp F      &kp G                  &kp H      &kp J      &kp K          &kp L    &kp SEMI   &kp APOS   &kp ENTER     &kp PG_DN                        &kp G
+ &kp LSHFT     &kp Z           &kp X            &kp C           &kp V      &kp B                  &kp N      &kp M      &kp COMMA      &kp DOT  &kp FSLH   &kp RSHFT  &kp UP_ARROW  &kp HOME                         &kp B
+ &kp LCTRL     &kp LEFT_GUI    &kp LEFT_ALT     &kp SPACE                  &kp SPACE                         &ltq 1 SPACE  &kp RIGHT_ALT  &mo 2    &kp RCTRL  &kp LEFT   &kp DOWN      &kp RIGHT                     &kp SPACE
  &kp UP_ARROW  &kp LEFT_ARROW  &kp RIGHT_ARROW  &kp DOWN_ARROW  &kp ENTER  &kp SPACE              &mkp LCLK  &mkp LCLK  &mkp RCLK      &none
             >;
 
@@ -89,10 +89,10 @@
 
         layer_1 {
             bindings = <
- &kp GRAVE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6      &kp F7  &kp F8        &kp F9        &kp F10       &kp F11  &kp F12  &trans     &kp HOME             &kp F6
- &trans     &trans  &trans  &trans  &trans  &trans              &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans   &trans   &trans     &kp PG_UP   &kp END  &trans
- &trans     &trans  &trans  &trans  &trans  &trans              &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans   &trans   &kp PG_DN  &kp INSERT           &trans
- &trans     &trans  &trans  &trans  &trans  &trans              &none   &none         &trans        &trans        &trans   &trans   &trans     &trans               &trans
+ &kp GRAVE  &kp F1    &kp F2  &kp F3   &kp F4  &kp F5  &kp F6      &kp F7    &kp F8        &kp F9        &kp F10       &kp F11  &kp F12  &trans     &trans      &kp F6
+ &trans     &kp HOME  &trans  &kp END  &trans  &trans              &trans    &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans   &trans   &trans     &kp PG_UP   &trans   &trans
+ &trans     &trans    &trans  &trans   &trans  &trans              &kp LEFT  &kp DOWN      &kp UP        &kp RIGHT     &trans   &trans   &kp PG_DN  &trans                 &trans
+ &trans     &trans    &trans  &trans   &trans  &trans              &none     &none         &trans        &trans        &trans   &trans   &trans     &kp END                &trans
  &trans     &trans  &trans  &trans          &trans                      &trans        &trans        &trans        &trans   &trans   &trans     &trans               &trans
  &trans     &trans  &trans  &trans  &trans  &trans              &trans  &trans        &trans        &trans
             >;
