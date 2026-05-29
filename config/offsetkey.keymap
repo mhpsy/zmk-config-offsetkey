@@ -24,9 +24,17 @@
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &msc {
-    acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
-    delay-ms = <0>;                   // 0
+    /*
+     * The encoder taps &msc for only tap-ms (~30ms) per detent. &msc ramps
+     * scroll velocity up from zero, so with acceleration the first tick's
+     * movement (~0.26 units) truncates to 0 and the sub-unit remainder is
+     * discarded on release -> every detent emits 0 scroll, regardless of the
+     * scroll value. Uniform speed (exponent 0) gives full velocity on the
+     * first tick, so each detent produces a whole scroll unit.
+     */
+    acceleration-exponent = <0>;
+    time-to-max-speed-ms = <100>;
+    delay-ms = <0>;
 };
 
 &mmv {
