@@ -16,6 +16,8 @@ manifest:
       url-base: https://github.com/infused-kim
     - name: a741725193
       url-base: https://github.com/a741725193
+    - name: mhpsy
+      url-base: https://github.com/mhpsy
   projects:
     - name: zmk
       remote: cormoran
@@ -37,8 +39,13 @@ manifest:
       remote: cormoran
       revision: main
     - name: zmk-pmw3610-driver
-      remote: cormoran
-      revision: main
+      # Fork of cormoran/zmk-pmw3610-driver, branched off 274c92b (the last
+      # pixart,pmw3610-compatible commit, matching our overlay + v0.3 zmk fork).
+      # Adds CONFIG_PMW3610_WAKE_DISCARD_SAMPLES: drops the first N motion
+      # samples after wake to stop the cursor jumping on resume from idle/sleep.
+      # Branch: wake-discard
+      remote: mhpsy
+      revision: 89b1cfa744f9113a744a3b20e6d7029bf0445a41
     - name: zmk-nice-oled
       remote: mctechnology17
       revision: main
