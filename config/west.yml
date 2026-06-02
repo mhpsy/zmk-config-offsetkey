@@ -49,12 +49,12 @@ manifest:
       # Fork of cormoran/zmk-pmw3610-driver, branched off 274c92b (the last
       # pixart,pmw3610-compatible commit, matching our overlay + v0.3 zmk fork).
       # Forces a full sensor re-init on the ACTIVE/wake transition (fixes the
-      # stuck-motion runaway after waking), plus CONFIG_PMW3610_MAX_DELTA which
-      # drops a single implausibly-large sample (the stale frame that sneaks out
-      # right at wake before re-init takes over).
+      # stuck-motion runaway after the shared VEXT rail is gated off in idle),
+      # plus CONFIG_PMW3610_INIT_SETTLE_SAMPLES which drops the sensor's first
+      # post-init frames (deterministic, replaces the old MAX_DELTA heuristic).
       # Branch: wake-reinit
       remote: mhpsy
-      revision: 40a56e270ba0c11c3c6a2f477eba64f973c89955
+      revision: d9c2581c4254fd7edaec6fae83e2bea575943a4a
     - name: zmk-nice-oled
       remote: mctechnology17
       revision: main
