@@ -48,13 +48,18 @@ manifest:
     - name: zmk-pmw3610-driver
       # Fork of cormoran/zmk-pmw3610-driver, branched off 274c92b (the last
       # pixart,pmw3610-compatible commit, matching our overlay + v0.3 zmk fork).
-      # Forces a full sensor re-init on the ACTIVE/wake transition (fixes the
-      # stuck-motion runaway after the shared VEXT rail is gated off in idle),
-      # plus CONFIG_PMW3610_INIT_SETTLE_SAMPLES which drops the sensor's first
-      # post-init frames (deterministic, replaces the old MAX_DELTA heuristic).
-      # Branch: wake-reinit
+      # The trackball is on always-on power (the ext-power/VEXT gating only feeds
+      # the RGB underglow, NOT this sensor -- confirmed: with RGB off the rail is
+      # cut on first idle and never restored, yet the ball keeps working). So on
+      # idle this fork keeps the sensor force-awake instead of downshifting, and
+      # does NOT re-init on wake. That removes the PMW3610 rest-exit glitch + the
+      # wake re-init that together latched a one-off cursor jump when activity
+      # resumed (e.g. first keypress after a pause). Earlier wake-reinit +
+      # settle-discard versions only masked it. Costs a little idle current until
+      # deep sleep (lower CONFIG_ZMK_IDLE_SLEEP_TIMEOUT to mitigate).
+      # Branch: keep-awake-no-reinit
       remote: mhpsy
-      revision: d9c2581c4254fd7edaec6fae83e2bea575943a4a
+      revision: 251852fd0e1c02f14db0ba194a4b673f405bfb48
     - name: zmk-nice-oled
       remote: mctechnology17
       revision: main
